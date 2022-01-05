@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/nano.min.css">
+
+  <link rel="stylesheet" media="screen and (max-width: 1000px)" type="text/css" href="assets/style_max_width_1000.css">
+  <link rel="stylesheet" type="text/css" href="assets/icons.css">
+
+
+  <script defer src="assets/p5.min.js"></script>
+  <script src="./nftdata.js"></script>
+
+  <script src="assets/pickr.min.js"></script>
+  <script defer src="assets/setup.js"></script>
+
+  <script defer src="assets/draw.js"></script>
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Generative art from Ethereum price data." />
+  <title>PriceArt</title>
+  <link rel="shortcut icon" type="image/png" href="assets/favicon-32x32.png" />
+</head>
+
+
+<body>
+
+
+  <div float:left; id="pa">
+    <img src="assets/padark.png" id="header-image" alt="PriceArt" onclick="window.location.reload()">
+  </div>
+
+  <img id="logo-text" src="assets/lightpriceart.png" alt="PriceArt text">
+
+
+  <button onclick="location.href='https://price-art.io/'" type=" button" id='home-button'>Home</button>
+  <div id="wrapper">
+
+
+
+  </div>
+
+  <div id="sketch" class="sketch">
+
+    <div class="content">
+    </div>
+
+
+    <div id="canvas-and-metadata">
+
+      <div id="settings">
+        <!-- <span class="tooltiptext">Tooltip text</span> -->
+
+
+        <button data-modal-target="#modal" class="help" id="help-button"
+          style="font-size:25px; display: none;">?</button>
+
+      </div>
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <div class="title">Help</div>
+          <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Welcome to ETH/USD PriceArt!</p>
+          <ul>
+            <li>For the best experience, use chrome on desktop.</li>
+            <li>Click and drag on the canvas to rotate the model, right click and drag to move the model, and click the
+              mousewheel to reset the model view.
+              <ul>
+                <li><span class='material-icons'>file_download</span> Downloads png image. (Desktop only)</li>
+                <li><span class='material-icons'>home</span> Resets model back to the default state.</li>
+                <li><span class='material-icons'>nights_stay</span> Toggles dark mode.</li>
+                <li><span class='material-icons'>star</span> Toggles the background stars.</li>
+                <li><span class='material-icons'>layers</span> Turns on the data labels and ETH logo.</li>
+                <li><span class='material-icons'>fast_forward</span> Toggles the model animation settings.</li>
+                <li><span class='material-icons'>casino</span> Randomizes all values.</li>
+                <li><span class='material-icons'>add_photo_alternate</span> Allows you to upload a custom background.
+                  <br>
+                  Square images with a small file size work best. <br> (By using this feature you agree to
+                  only use images that you own the rights to.)</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="overlay"></div>
+
+      <div id="p5_loading" class="loadingclass">
+        <div class="loader">
+          <p id="loading-text">Loading...</p>
+
+        </div>
+
+      </div>
+      <div id="info-one" style="display: none;">
+        <select name="date" id="date-selector" onclick="play()">
+          <option value="2015">2015</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="September 2015">September 2015</option>
+          <option value="October 2015">October 2015</option>
+          <option value="November 2015">November 2015</option>
+          <option value="December 2015">December 2015</option>
+          <option value="January 2016">January 2016</option>
+          <option value="February 2016">February 2016</option>
+          <option value="March 2016">March 2016</option>
+          <option value="April 2016">April 2016</option>
+          <option value="May 2016">May 2016</option>
+          <option value="June 2016">June 2016</option>
+          <option value="July 2016">July 2016</option>
+          <option value="August 2016">August 2016</option>
+          <option value="September 2016">September 2016</option>
+          <option value="October 2016">October 2016</option>
+          <option value="November 2016">November 2016</option>
+          <option value="December 2016">December 2016</option>
+          <option value="January 2017">January 2017</option>
+          <option value="February 2017">February 2017</option>
+          <option value="March 2017">March 2017</option>
+          <option value="April 2017">April 2017</option>
+          <option value="May 2017">May 2017</option>
+          <option value="June 2017">June 2017</option>
+          <option value="July 2017">July 2017</option>
+          <option value="August 2017">August 2017</option>
+          <option value="September 2017">September 2017</option>
+          <option value="October 2017">October 2017</option>
+          <option value="November 2017">November 2017</option>
+          <option value="December 2017">December 2017</option>
+          <option value="January 2018">January 2018</option>
+          <option value="February 2018">February 2018</option>
+          <option value="March 2018">March 2018</option>
+          <option value="April 2018">April 2018</option>
+          <option value="May 2018">May 2018</option>
+          <option value="June 2018">June 2018</option>
+          <option value="July 2018">July 2018</option>
+          <option value="August 2018">August 2018</option>
+          <option value="September 2018">September 2018</option>
+          <option value="October 2018">October 2018</option>
+          <option value="November 2018">November 2018</option>
+          <option value="December 2018">December 2018</option>
+          <option value="January 2019">January 2019</option>
+          <option value="February 2019">February 2019</option>
+          <option value="March 2019">March 2019</option>
+          <option value="April 2019">April 2019</option>
+          <option value="May 2019">May 2019</option>
+          <option value="June 2019">June 2019</option>
+          <option value="July 2019">July 2019</option>
+          <option value="August 2019">August 2019</option>
+          <option value="September 2019">September 2019</option>
+          <option value="October 2019">October 2019</option>
+          <option value="November 2019">November 2019</option>
+          <option value="December 2019">December 2019</option>
+          <option value="January 2020">January 2020</option>
+          <option value="February 2020">February 2020</option>
+          <option value="March 2020">March 2020</option>
+          <option value="April 2020">April 2020</option>
+          <option value="May 2020">May 2020</option>
+          <option value="June 2020">June 2020</option>
+          <option value="July 2020">July 2020</option>
+          <option value="August 2020">August 2020</option>
+          <option value="September 2020">September 2020</option>
+          <option value="October 2020">October 2020</option>
+          <option value="November 2020">November 2020</option>
+          <option value="December 2020">December 2020</option>
+          <option value="January 2021">January 2021</option>
+          <option value="February 2021">February 2021</option>
+          <option value="March 2021">March 2021</option>
+          <option value="April 2021">April 2021</option>
+          <option value="May 2021">May 2021</option>
+          <option value="June 2021">June 2021</option>
+          <option value="July 2021">July 2021</option>
+          <option value="August 2021">August 2021</option>
+          <option value="September 2021">September 2021</option>
+          <option value="October 2021">October 2021</option>
+          <option value="November 2021" selected>November 2021</option>
+        </select>
+      </div>
+
+      <div class='sliders' id='sliders-div'>
+        <div class="slider-buttons"></div>
+
+        <label for="pickr-container">Color</label>
+
+        <div class="pickr-container" onclick="play()"></div>
+
+
+
+        <label for="slider-1">Zoom</label>
+        <input type="range" min="0.1" max="10" value="0.7" step="0.01" class="slider" id="slider-1">
+
+        <label for="slider-10">Line Weight</label>
+        <input type="range" min="0.01" max="1.2" value="1.01" step="0.001" class="slider" id="slider-10">
+
+        <label for="slider-3"># of Lines</label>
+        <input type="range" min="0" max="60" value="10" step="1" class="slider" id="slider-3">
+
+        <label for="slider-2">Scale</label>
+        <input type="range" min="0" max="0.4" value="0.06" step="0.001" class="slider" id="slider-2">
+
+
+
+        <label for="slider-9" id="slider-9-label">Rotation</label>
+        <input type="range" min="0" max="1" value="0" step="0.001" class="slider" id="slider-9">
+
+        <label for="slider-5" id="slider-5-label">X Offset</label>
+        <input type="range" min="-50" max="50" value="0" step="1" class="slider" id="slider-5">
+
+        <label for="slider-4" id="slider-4-label">Y Offset</label>
+        <input type="range" min="-100" max="100" value="0" step="0.001" class="slider" id="slider-4">
+
+
+
+        <label for="slider-6" id="slider-6-label">Z Offset</label>
+        <input type="range" min="-1000" max="200" value="-400" step="1" class="slider" id="slider-6">
+
+        <label for="slider-7">Saturation</label>
+        <input type="range" min="0.01" max="30" value="8.5" step="0.001" class="slider" id="slider-7">
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>

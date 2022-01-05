@@ -1,0 +1,218 @@
+#canvas-and-metadata {
+    display: grid;
+
+
+}
+
+#defaultCanvas0 {
+    grid-row-start: row1-start;
+    grid-row-end: 3;
+    justify-self: center;
+
+    touch-action: none;
+
+}
+
+#preview-image {
+    width: 100vw !important;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    padding-left: 1%;
+    padding-right: 1%;
+
+}
+
+#logo-text {
+    display: block;
+    transition: all ease-in-out 1.2s;
+
+}
+
+#pa img {
+    display: none;
+}
+
+canvas {
+    margin: 5px 0;
+    -ms-touch-action: none;
+    touch-action: none;
+
+}
+
+.loader {
+    top: 75px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+}
+
+.loader p {
+    position: fixed;
+    top: 20%;
+    left: 15%;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+
+#info-one {
+    left: 220px;
+    top: 720px;
+}
+
+#settings {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 400px !important;
+    height: 55px;
+    margin-top: 1px !important;
+
+    place-items: center;
+
+}
+
+.slider-buttons {
+    width: 300px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    place-items: center;
+
+}
+
+.tip-reset:hover:after {
+    display: none;
+
+}
+
+.tip-night:hover:after {
+    display: none;
+
+}
+
+.tip-zoom:hover:after {
+    display: none;
+
+}
+
+.tip-refresh:hover:after {
+    display: none;
+
+}
+
+.tip-swap:hover:after {
+    display: none;
+
+}
+
+.tip-download:hover:after {
+    display: none;
+
+}
+
+.button-lines:hover:after {
+    display: none;
+
+
+}
+
+.button-random:hover:after {
+    display: none;
+
+
+}
+
+.button-upload:hover:after {
+    display: none;
+
+
+}
+
+
+.sliders {
+    flex-shrink: 3;
+    flex-grow: 4;
+
+    color: black;
+    background: #c0c0c07e;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-self: center;
+    margin: 25px;
+
+
+
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 400px;
+    height: 650px;
+
+    margin-top: 50px !important;
+    flex-direction: column;
+    float: right;
+    text-align: center;
+    padding-top: 10px;
+    z-index: 1;
+
+}
+
+
+.slider {
+    width: 80%;
+    position: relative;
+
+
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 25px;
+    width: 25px;
+    height: 25px;
+
+
+
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+
+}
+
+#slider-7 {
+    margin-bottom: 20px;
+}
+
+
+.pickr .pcr-button {
+    position: relative;
+    height: 3em;
+    width: 15em;
+
+    padding: 0.5em;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+    border-radius: 5em;
+    background-size: 0;
+    transition: all 0.3s
+}
